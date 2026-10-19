@@ -1,0 +1,42 @@
+# BOTSKILL v3.0 Development Progress Tracker
+
+> **Source of Truth:** All phase transitions require explicit plan review, complete code, passing tests, security review, and recorded evidence before advancing.
+
+---
+
+## 1. Master Phase Matrix
+
+| Phase | Description | Status | Plan Reviewed | Code Complete | Tests Passed | Debug Done | Evidence / Commit | Blockers |
+|---|---|---|---|---|---|---|---|---|
+| **0** | **Baseline Audit & Environment Setup** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | `docs/BASELINE_AUDIT.md` | None |
+| **1** | Core Domain Models & SQLite Persistence | NOT STARTED | no | no | no | no | — | None |
+| **2** | Email Connectors & Windows Outlook COM | NOT STARTED | no | no | no | no | — | Phase 1 |
+| **3** | AI Gateway & Provider Router | NOT STARTED | no | no | no | no | — | Phase 1 |
+| **4** | Native Local SLM Runtime (llama-cpp) | NOT STARTED | no | no | no | no | — | Phase 3 |
+| **5** | Reliable Routing & Failover Verification | NOT STARTED | no | no | no | no | — | Phase 4 |
+| **6A** | Doc Intake & Safe Parsers | NOT STARTED | no | no | no | no | — | Phase 1 |
+| **6B** | Document Classification & Metadata | NOT STARTED | no | no | no | no | — | Phase 6A |
+| **6C** | Rule Extraction & Conflict Resolution | NOT STARTED | no | no | no | no | — | Phase 6B |
+| **6D** | Policy-Grounded Drafting & Provenance | NOT STARTED | no | no | no | no | — | Phase 6C, Phase 4 |
+| **6E** | Policy Lifecycle & Invalidation | NOT STARTED | no | no | no | no | — | Phase 6D |
+| **7** | Local Dashboard Foundation & Auth | NOT STARTED | no | no | no | no | — | Phase 1 |
+| **8** | Dashboard: Accounts & AI Management | NOT STARTED | no | no | no | no | — | Phase 7, Phase 2, Phase 4 |
+| **9** | Dashboard: Knowledge & Policy Matrix | NOT STARTED | no | no | no | no | — | Phase 8, Phase 6 |
+| **10** | Draft Review Queue & Autonomy Controls | NOT STARTED | no | no | no | no | — | Phase 9 |
+| **11** | Controlled Learning & Governance | NOT STARTED | no | no | no | no | — | Phase 10 |
+| **12** | Security Hardening & Adversarial Evals | NOT STARTED | no | no | no | no | — | Phase 10 |
+| **13** | Reliability, Crash Recovery & Resilience | NOT STARTED | no | no | no | no | — | Phase 10 |
+| **14** | Packaging & Windows Launcher | NOT STARTED | no | no | no | no | — | Phase 13 |
+| **15** | Agent Skill & CLI Parity | NOT STARTED | no | no | no | no | — | Phase 14 |
+| **16** | End-to-End Acceptance & Final Sign-Off | NOT STARTED | no | no | no | no | — | Phase 15 |
+
+---
+
+## 2. Phase 0 Audit & Execution Evidence
+
+- **Date Completed:** October 20, 2026
+- **Audit Findings:** Recorded in `docs/BASELINE_AUDIT.md`.
+- **Local Outlook COM:** Dispatched successfully via `win32com.client`. Detected 6 accounts (`hr@aivaratech.online`, etc.). Verified zero outbound send risk in read probe.
+- **Local SLM:** `qwen2.5-0.5b-instruct-q4_k_m.gguf` verified at `C:\Users\user\Desktop\gayatri\gayatriailocal\models` (491 MB). `llama_cpp` 0.3.35 verified on Python 3.12.
+- **Git Repository:** Initialized with strict `.gitignore` excluding caches, large model binaries, runtime databases, and credential files.
+- **Next Phase:** Phase 1 (Core Domain Models, SQLite Persistence & Idempotency).
