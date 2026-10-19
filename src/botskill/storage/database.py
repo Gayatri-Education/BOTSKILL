@@ -109,7 +109,7 @@ class DatabaseManager:
 
     def __init__(self, db_path: str = ":memory:"):
         self.db_path = db_path
-        self._lock = threading.Lock()
+        self._lock = threading.RLock()
         self._mem_conn: Optional[sqlite3.Connection] = None
         if db_path != ":memory:":
             Path(db_path).parent.mkdir(parents=True, exist_ok=True)
