@@ -40,9 +40,11 @@ venv.bak/
 *.db-journal
 *.sqlite
 *.sqlite3
+data/
 data/runtime/
 data/*.db
 data/mailbox_cache/
+data/.session_token
 
 # Large model binaries (GGUF, bin, onnx)
 models/*.gguf

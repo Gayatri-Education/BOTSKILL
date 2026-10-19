@@ -143,6 +143,38 @@ def _get_default_drafts() -> List[DraftReply]:
             is_approved=True,
             created_at=now,
         ),
+        DraftReply(
+            draft_id="draft-003",
+            message_id="msg-aivara-003",
+            thread_id="request for update regarding today's orientation session",
+            account_id="hr@aivaratech.online",
+            subject="Re: Request for Update Regarding Today's Orientation Session",
+            body_text=(
+                "Dear Adil,\n\n"
+                "Thank you for following up regarding today's orientation session. As specified in our "
+                "Candidate Onboarding SOP, virtual meeting links and orientation credentials are distributed "
+                "strictly 30 minutes prior to the scheduled session start.\n\n"
+                "Please check your inbox and spam folder shortly before start time. Our onboarding "
+                "coordinator will also reach out if any technical adjustments occur.\n\n"
+                "Warm regards,\nHR Operations Team\nAivara Technologies"
+            ),
+            citations=[
+                PolicyCitation(
+                    rule_id="RULE-HR-005",
+                    document_id="doc_orientation_guide_2026",
+                    document_title="Aivara Onboarding & Orientation SOP 2026",
+                    source_location="Section 1.2",
+                    source_quote="Orientation meeting links and materials are dispatched 30 minutes prior to session start to registered candidate emails.",
+                ),
+            ],
+            policy_decision=PolicyDecision.PASS,
+            decision_reason="Verified against Candidate Onboarding SOP 2026.",
+            model_provenance="Qwen2.5-0.5B-Instruct-Q4_K_M (Local CPU)",
+            latency_ms=210.0,
+            staged_to_provider=False,
+            is_approved=True,
+            created_at=now,
+        ),
     ]
 
 

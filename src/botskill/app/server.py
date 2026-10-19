@@ -87,6 +87,10 @@ def create_app(
     if static_dir.exists():
         app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
 
+    demo_dir = Path(__file__).resolve().parent.parent.parent.parent / "demo"
+    if demo_dir.exists():
+        app.mount("/demo", StaticFiles(directory=str(demo_dir)), name="demo")
+
     # Include API Routers with CSRF protection on mutating methods
     app.include_router(accounts.router, dependencies=[Depends(csrf_verifier)])
     app.include_router(ai.router, dependencies=[Depends(csrf_verifier)])

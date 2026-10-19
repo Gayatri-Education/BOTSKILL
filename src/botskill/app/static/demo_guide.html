@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BOTSKILL v3.0 — Interactive Demo Video & Onboarding Guide</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-base: #0B0F17;
+      --bg-surface: #111827;
+      --bg-card: #162032;
+      --border: #1F293D;
+      --text-muted: #94A3B8;
+      --text-faint: #64748B;
+    }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-base);
+      color: #E2E8F0;
+    }
+    code, pre {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .custom-scroll::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: rgba(15, 23, 42, 0.4);
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #334155;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-teal-500/30 selection:text-teal-200">
+
+  <!-- TOP HEADER -->
+  <header class="h-16 bg-[var(--bg-surface)] border-b border-[var(--border)] px-8 flex items-center justify-between shrink-0 shadow-lg">
+    <div class="flex items-center space-x-3">
+      <div class="h-9 w-9 rounded-xl bg-gradient-to-tr from-teal-500 to-emerald-400 flex items-center justify-center font-black text-slate-950 text-base shadow-md shadow-teal-500/20">
+        B
+      </div>
+      <div>
+        <div class="flex items-center space-x-2">
+          <span class="font-bold text-white tracking-wide text-sm">BOTSKILL v3.0</span>
+          <span class="text-[10px] px-2 py-0.5 rounded-full bg-teal-500/10 text-teal-300 font-mono font-medium border border-teal-500/20">DEMO & ONBOARDING</span>
+        </div>
+        <p class="text-[11px] text-[var(--text-muted)]">Enterprise Offline Email Co-Pilot & Policy Governance Engine</p>
+      </div>
+    </div>
+
+    <div class="flex items-center space-x-3">
+      <a href="/" class="px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-800 hover:bg-slate-700 text-slate-200 border border-[var(--border)] transition">
+        ← Back to Workstation Dashboard
+      </a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER -->
+  <main class="flex-1 max-w-7xl w-full mx-auto p-8 space-y-8">
+
+    <!-- HERO SECTION WITH VIDEO PLAYER -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Video Player Frame -->
+      <div class="lg:col-span-8 bg-[var(--bg-surface)] border border-[var(--border)] rounded-2xl overflow-hidden shadow-2xl">
+        <div class="p-4 bg-slate-900 border-b border-[var(--border)] flex items-center justify-between">
+          <div class="flex items-center space-x-2">
+            <span class="h-3 w-3 rounded-full bg-rose-500/80 inline-block"></span>
+            <span class="h-3 w-3 rounded-full bg-amber-500/80 inline-block"></span>
+            <span class="h-3 w-3 rounded-full bg-emerald-500/80 inline-block"></span>
+            <span class="text-xs font-mono text-slate-400 ml-2">botskill_v3_demo.mp4 — 1080p Recorded Local Walkthrough</span>
+          </div>
+          <span class="text-[11px] font-mono text-teal-400 bg-teal-500/10 px-2 py-0.5 rounded">100% Offline Local Session</span>
+        </div>
+
+        <div class="aspect-video bg-black flex items-center justify-center relative">
+          <video controls autoplay loop class="w-full h-full object-contain" poster="/static/poster.png">
+            <source src="/demo/botskill_v3_demo.mp4" type="video/mp4">
+            <source src="/demo/botskill_v3_demo.webm" type="video/webm">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+
+        <div class="p-4 bg-[var(--bg-card)] border-t border-[var(--border)] flex items-center justify-between text-xs text-[var(--text-muted)]">
+          <div class="flex items-center space-x-4">
+            <span>● <strong>Resolution:</strong> 1920x1080 (Full HD)</span>
+            <span>● <strong>Outlook Client:</strong> Windows MAPI COM</span>
+            <span>● <strong>Model:</strong> Qwen2.5-0.5B (CPU)</span>
+          </div>
+          <span class="text-amber-400 font-medium">LEVEL_1_DRAFT_ONLY Active</span>
+        </div>
+      </div>
+
+      <!-- Quick Summary Card -->
+      <div class="lg:col-span-4 bg-[var(--bg-surface)] border border-[var(--border)] rounded-2xl p-6 space-y-5 shadow-xl">
+        <h2 class="text-base font-bold text-white tracking-tight flex items-center space-x-2">
+          <span>Demo Highlights & Flow</span>
+        </h2>
+        <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+          This recording showcases BOTSKILL running against <strong>real emails from Microsoft Outlook</strong>, grounding replies with the <strong>local SLM</strong>, and staging drafts without cloud egress.
+        </p>
+
+        <div class="space-y-3 text-xs">
+          <div class="p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-start space-x-3">
+            <span class="h-6 w-6 rounded-lg bg-teal-500/20 text-teal-300 font-bold flex items-center justify-center shrink-0 text-xs">1</span>
+            <div>
+              <strong class="text-white block mb-0.5">Real Outlook Discovery</strong>
+              <span class="text-[var(--text-muted)]">Probing 6 accounts including hr@aivaratech.online.</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-start space-x-3">
+            <span class="h-6 w-6 rounded-lg bg-teal-500/20 text-teal-300 font-bold flex items-center justify-center shrink-0 text-xs">2</span>
+            <div>
+              <strong class="text-white block mb-0.5">Policy Document Training</strong>
+              <span class="text-[var(--text-muted)]">Parsing HR policies & human-in-the-loop rule activation.</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-start space-x-3">
+            <span class="h-6 w-6 rounded-lg bg-teal-500/20 text-teal-300 font-bold flex items-center justify-center shrink-0 text-xs">3</span>
+            <div>
+              <strong class="text-white block mb-0.5">Grounded SLM Generation</strong>
+              <span class="text-[var(--text-muted)]">Exact line citations and blocking unauthorized claims.</span>
+            </div>
+          </div>
+
+          <div class="p-3 rounded-xl bg-[var(--bg-card)] border border-[var(--border)] flex items-start space-x-3">
+            <span class="h-6 w-6 rounded-lg bg-teal-500/20 text-teal-300 font-bold flex items-center justify-center shrink-0 text-xs">4</span>
+            <div>
+              <strong class="text-white block mb-0.5">Safe 1-Click Staging</strong>
+              <span class="text-[var(--text-muted)]">Zero live auto-send; staged directly to Outlook Drafts.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STEP-BY-STEP OPERATIONAL GUIDE -->
+    <section class="space-y-6 pt-4">
+      <div class="border-b border-[var(--border)] pb-4">
+        <h2 class="text-xl font-bold text-white tracking-tight">Step-by-Step System Manual</h2>
+        <p class="text-xs text-[var(--text-muted)] mt-1">Everything you need to know to download, configure, run, test, and upgrade BOTSKILL.</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+        <!-- Card 1: Setup & Launch -->
+        <div class="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border)] space-y-4 shadow-lg">
+          <div class="flex items-center space-x-2 text-teal-400 font-bold text-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+            <span>1. Launch & Prerequisites</span>
+          </div>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+            Ensure Python 3.12 is installed and Microsoft Outlook is open on your machine. Double-click the launcher batch file:
+          </p>
+          <div class="p-3 rounded-xl bg-slate-950 font-mono text-[11px] text-teal-300 border border-slate-800">
+            .\run_botskill.bat
+          </div>
+          <p class="text-[11px] text-[var(--text-faint)]">
+            Automatically bootstraps directories, runs SQLite crash recovery, and opens the loopback workstation on port 8765.
+          </p>
+        </div>
+
+        <!-- Card 2: Training & Policy Grounding -->
+        <div class="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border)] space-y-4 shadow-lg">
+          <div class="flex items-center space-x-2 text-teal-400 font-bold text-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
+            <span>2. "Training" on Policies</span>
+          </div>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+            Upload company policies, handbooks, and SLAs (PDF, DOCX, TXT, CSV). Candidate rules are extracted with citations:
+          </p>
+          <div class="p-3 rounded-xl bg-slate-950 font-mono text-[11px] text-teal-300 border border-slate-800">
+            python -m botskill.cli policy list<br>
+            python -m botskill.cli policy approve &lt;rule_id&gt;
+          </div>
+          <p class="text-[11px] text-[var(--text-faint)]">
+            Human approval is mandatory. Inactive rules cannot be used by the AI to make commitments.
+          </p>
+        </div>
+
+        <!-- Card 3: Testing & Upgrading -->
+        <div class="p-6 rounded-2xl bg-[var(--bg-surface)] border border-[var(--border)] space-y-4 shadow-lg">
+          <div class="flex items-center space-x-2 text-teal-400 font-bold text-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+            <span>3. Testing & Upgrades</span>
+          </div>
+          <p class="text-xs text-[var(--text-muted)] leading-relaxed">
+            Run the comprehensive 69-test suite anytime to ensure zero regressions across unit, integration, and E2E tests:
+          </p>
+          <div class="p-3 rounded-xl bg-slate-950 font-mono text-[11px] text-teal-300 border border-slate-800">
+            python -m pytest -v
+          </div>
+          <p class="text-[11px] text-[var(--text-faint)]">
+            Source code is protected by an anti-tamper guard. Update rules by uploading new policy documents without modifying code.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="h-14 bg-[var(--bg-surface)] border-t border-[var(--border)] px-8 flex items-center justify-between text-xs text-[var(--text-muted)]">
+    <span>BOTSKILL v3.0 Production Release • Zero Cloud Egress</span>
+    <span>Safety Invariant: LEVEL_1_DRAFT_ONLY</span>
+  </footer>
+
+</body>
+</html>

@@ -67,13 +67,31 @@ class OutlookMAPIAdapter:
                 "autonomy_level": self.autonomy_level.value,
             }
 
+    def _get_folder_for_account(self, ns, account_id: str, target_name: str):
+        """Locates the store-specific folder for an account or falls back to default MAPI folder."""
+        target_name_lower = target_name.lower()
+        if hasattr(ns, "Folders"):
+            for folder in ns.Folders:
+                if account_id.lower() in folder.Name.lower():
+                    for sub in folder.Folders:
+                        if sub.Name.lower() == target_name_lower:
+                            return sub
+        # Fallback to default
+        if target_name_lower == "inbox":
+            return ns.GetDefaultFolder(6)
+        elif target_name_lower == "drafts":
+            return ns.GetDefaultFolder(16)
+        return None
+
     def list_new_messages(self, account_id: str, limit: int = 20) -> List[EmailMessage]:
         """Retrieve recent unread messages from Outlook Inbox for the given account."""
         ns = self._ensure_connected()
         messages = []
 
         try:
-            inbox = ns.GetDefaultFolder(6)  # 6 = olFolderInbox
+            inbox = self._get_folder_for_account(ns, account_id, "inbox")
+            if not inbox:
+                return []
             items = inbox.Items
             items.Sort("[ReceivedTime]", True)
 
@@ -136,8 +154,9 @@ class OutlookMAPIAdapter:
         """
         try:
             ns = self._ensure_connected()
-            # 16 = olFolderDrafts
-            drafts_folder = ns.GetDefaultFolder(16)
+            drafts_folder = self._get_folder_for_account(ns, draft.account_id, "drafts")
+            if not drafts_folder:
+                drafts_folder = ns.GetDefaultFolder(16)
             mail_item = drafts_folder.Items.Add(0)  # 0 = olMailItem
 
             mail_item.Subject = draft.subject
