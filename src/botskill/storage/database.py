@@ -155,6 +155,10 @@ class DatabaseManager:
                     (SCHEMA_VERSION, datetime.now(timezone.utc).isoformat())
                 )
 
+    def get_repository(self) -> "StorageRepository":
+        return StorageRepository(self)
+
+
 
 class StorageRepository:
     """High-level repository for messages, drafts, policy rules, and audit events."""
@@ -182,6 +186,8 @@ class StorageRepository:
                 datetime.now(timezone.utc).isoformat()
             ))
             return cur.rowcount > 0
+
+    save_message = insert_message
 
     def get_message(self, message_id: str) -> Optional[EmailMessage]:
         query = "SELECT * FROM messages WHERE message_id = ?;"

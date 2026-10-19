@@ -516,9 +516,45 @@
       }
     }
 
-    function testLocalPrompt() {
+    let csrfToken = "";
+    async function initSession() {
+      try {
+        const res = await fetch("/api/auth/session");
+        if (res.ok) {
+          const data = await res.json();
+          csrfToken = data.csrf_token;
+        }
+      } catch (err) {
+        console.warn("Session init error:", err);
+      }
+    }
+    window.addEventListener("DOMContentLoaded", initSession);
+
+    async function testLocalPrompt() {
       const out = document.getElementById('test-output');
       out.classList.remove('hidden');
+      out.innerHTML = '<span class="text-teal-400 font-mono text-xs block animate-pulse">Running local SLM inference on CPU...</span>';
+      try {
+        const res = await fetch("/api/ai/test-inference", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken
+          },
+          body: JSON.stringify({ max_tokens: 80, temperature: 0.2 })
+        });
+        if (res.ok) {
+          const data = await res.json();
+          out.innerHTML = `
+            <span class="text-teal-400 font-mono font-bold block mb-1">✓ ${data.model_name} Output (Latency: ${data.latency_ms}ms, Egress: Zero):</span>
+            <span class="text-slate-200">"${data.output_text}"</span>
+          `;
+        } else {
+          out.innerHTML = `<span class="text-rose-400 font-mono text-xs">Inference failed: ${res.statusText}</span>`;
+        }
+      } catch (e) {
+        out.innerHTML = `<span class="text-rose-400 font-mono text-xs">Inference error: ${e.message}</span>`;
+      }
     }
   </script>
 </body>

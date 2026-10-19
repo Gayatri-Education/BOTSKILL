@@ -11,17 +11,24 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, JSONResponse
 from fastapi.staticfiles import StaticFiles
 
+from botskill.ai_providers.gateway import AIGateway
+from botskill.ai_providers.router import ModelRouter
 from botskill.app.auth import (
     LoopbackEnforcementMiddleware,
     SessionManager,
     get_csrf_verifier,
 )
+from botskill.app.routers import accounts, ai
+from botskill.core.interfaces import EmailProvider
 from botskill.storage.database import DatabaseManager
 
 
 def create_app(
     db_manager: Optional[DatabaseManager] = None,
     session_manager: Optional[SessionManager] = None,
+    mail_provider: Optional[EmailProvider] = None,
+    router: Optional[ModelRouter] = None,
+    ai_gateway: Optional[AIGateway] = None,
     host: str = "127.0.0.1",
     port: int = 8765,
     static_dir: Optional[Path] = None,
@@ -66,6 +73,9 @@ def create_app(
     # Store shared services in application state
     app.state.db_manager = db_manager
     app.state.session_manager = session_manager
+    app.state.mail_provider = mail_provider
+    app.state.router = router
+    app.state.ai_gateway = ai_gateway
     app.state.host = host
     app.state.port = port
     app.state.draft_only = True
@@ -75,6 +85,10 @@ def create_app(
     # Mount static assets if the folder exists
     if static_dir.exists():
         app.mount("/static", StaticFiles(directory=str(static_dir)), name="static")
+
+    # Include API Routers with CSRF protection on mutating methods
+    app.include_router(accounts.router, dependencies=[Depends(csrf_verifier)])
+    app.include_router(ai.router, dependencies=[Depends(csrf_verifier)])
 
     @app.get("/", summary="Dashboard Root Interface")
     async def serve_dashboard():

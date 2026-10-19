@@ -20,7 +20,7 @@
 | **6D** | **Policy-Grounded Drafting & Provenance** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 26 passed in `test_document_intelligence.py` | None |
 | **6E** | **Policy Lifecycle & Invalidation** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 26 passed in `test_document_intelligence.py` | None |
 | **7** | **Local Dashboard Foundation & Auth** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 32 passed in `test_dashboard_api.py` | None |
-| **8** | Dashboard: Accounts & AI Management | NOT STARTED | no | no | no | no | — | Phase 7, Phase 2, Phase 4 |
+| **8** | **Dashboard: Accounts & AI Management** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 37 passed in `test_dashboard_accounts_and_ai.py` | None |
 | **9** | Dashboard: Knowledge & Policy Matrix | NOT STARTED | no | no | no | no | — | Phase 8, Phase 6 |
 | **10** | Draft Review Queue & Autonomy Controls | NOT STARTED | no | no | no | no | — | Phase 9 |
 | **11** | Controlled Learning & Governance | NOT STARTED | no | no | no | no | — | Phase 10 |
