@@ -12,7 +12,7 @@
 | **1** | **Core Domain Models & SQLite Persistence** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 8 passed in `test_domain_and_storage.py` | None |
 | **2** | **Email Connectors & Windows Outlook COM** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 12 passed in `test_email_connectors.py` | None |
 | **3** | **AI Gateway & Provider Router** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 16 passed in `test_ai_gateway.py` | None |
-| **4** | Native Local SLM Runtime (llama-cpp) | NOT STARTED | no | no | no | no | — | Phase 3 |
+| **4** | **Native Local SLM Runtime (llama-cpp)** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 19 passed in `test_local_slm_runtime.py` | None |
 | **5** | Reliable Routing & Failover Verification | NOT STARTED | no | no | no | no | — | Phase 4 |
 | **6A** | Doc Intake & Safe Parsers | NOT STARTED | no | no | no | no | — | Phase 1 |
 | **6B** | Document Classification & Metadata | NOT STARTED | no | no | no | no | — | Phase 6A |

@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "model_id": "qwen2.5-0.5b-instruct-q4_k_m",
+  "display_name": "Qwen 2.5 0.5B Instruct (Q4_K_M)",
+  "provider": "llama_cpp",
+  "format": "gguf",
+  "artifact_path": "models/qwen2.5-0.5b-instruct-q4_k_m.gguf",
+  "architecture": "Qwen2.5",
+  "parameter_count": "0.5B",
+  "quantization": "Q4_K_M",
+  "context_length": 8192,
+  "chat_template": "chatml",
+  "capabilities": ["text-generation", "instruction-following", "json"],
+  "estimated_ram_mb": 680,
+  "hardware_requirements": "CPU baseline, 1GB RAM",
+  "license": "Apache-2.0",
+  "enabled": true
+}
