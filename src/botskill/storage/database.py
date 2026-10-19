@@ -321,6 +321,56 @@ class StorageRepository:
                 ))
         return rules
 
+    def list_all_rules(self) -> List[PolicyRule]:
+        query = "SELECT * FROM policy_rules ORDER BY created_at DESC;"
+        rules = []
+        with self.db.transaction() as cur:
+            cur.execute(query)
+            for row in cur.fetchall():
+                rules.append(PolicyRule(
+                    rule_id=row["rule_id"],
+                    title=row["title"],
+                    rule_type=RuleType(row["rule_type"]),
+                    severity=SeverityLevel(row["severity"]),
+                    condition=row["condition"],
+                    required_action=row["required_action"],
+                    prohibited_actions=json.loads(row["prohibited_actions_json"] or "[]"),
+                    source_document_id=row["source_document_id"],
+                    source_location=row["source_location"],
+                    source_quote=row["source_quote"],
+                    is_active=bool(row["is_active"]),
+                    created_at=row["created_at"]
+                ))
+        return rules
+
+    def get_rule(self, rule_id: str) -> Optional[PolicyRule]:
+        query = "SELECT * FROM policy_rules WHERE rule_id = ?;"
+        with self.db.transaction() as cur:
+            cur.execute(query, (rule_id,))
+            row = cur.fetchone()
+            if not row:
+                return None
+            return PolicyRule(
+                rule_id=row["rule_id"],
+                title=row["title"],
+                rule_type=RuleType(row["rule_type"]),
+                severity=SeverityLevel(row["severity"]),
+                condition=row["condition"],
+                required_action=row["required_action"],
+                prohibited_actions=json.loads(row["prohibited_actions_json"] or "[]"),
+                source_document_id=row["source_document_id"],
+                source_location=row["source_location"],
+                source_quote=row["source_quote"],
+                is_active=bool(row["is_active"]),
+                created_at=row["created_at"]
+            )
+
+    def set_rule_active_status(self, rule_id: str, is_active: bool) -> bool:
+        query = "UPDATE policy_rules SET is_active = ? WHERE rule_id = ?;"
+        with self.db.transaction() as cur:
+            cur.execute(query, (1 if is_active else 0, rule_id))
+            return cur.rowcount > 0
+
     # --- Audit Operations ---
 
     def log_audit(self, event: AuditEvent) -> None:
