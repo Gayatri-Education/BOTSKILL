@@ -22,7 +22,7 @@
 | **7** | **Local Dashboard Foundation & Auth** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 32 passed in `test_dashboard_api.py` | None |
 | **8** | **Dashboard: Accounts & AI Management** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 37 passed in `test_dashboard_accounts_and_ai.py` | None |
 | **9** | **Dashboard: Knowledge & Policy Matrix** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 41 passed in `test_dashboard_knowledge_api.py` | None |
-| **10** | Draft Review Queue & Autonomy Controls | NOT STARTED | no | no | no | no | — | Phase 9 |
+| **10** | **Draft Review Queue & Autonomy Controls** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 46 passed in `test_dashboard_drafts_and_autonomy.py` | None |
 | **11** | Controlled Learning & Governance | NOT STARTED | no | no | no | no | — | Phase 10 |
 | **12** | Security Hardening & Adversarial Evals | NOT STARTED | no | no | no | no | — | Phase 10 |
 | **13** | Reliability, Crash Recovery & Resilience | NOT STARTED | no | no | no | no | — | Phase 10 |

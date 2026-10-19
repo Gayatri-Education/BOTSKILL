@@ -497,22 +497,52 @@
       }
     }
 
-    function stageDraftInOutlook() {
-      alert("SUCCESS: Draft staged into Microsoft Outlook Drafts folder under 'hr@aivaratech.online'. Zero live emails were transmitted.");
+    async function stageDraftInOutlook() {
+      try {
+        const res = await fetch("/api/drafts/draft-001/stage", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-Token": csrfToken
+          }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          alert(`SUCCESS: Draft staged into Microsoft Outlook ${data.target_folder} folder under '${data.account_id}'. Zero live emails were transmitted.`);
+        } else {
+          const err = await res.json();
+          alert(`Error staging draft: ${err.detail || res.statusText}`);
+        }
+      } catch (e) {
+        alert("Error connecting to server: " + e.message);
+      }
     }
 
     let killActive = false;
-    function toggleKillSwitch() {
-      killActive = !killActive;
-      const btn = document.getElementById('kill-btn');
-      const label = document.getElementById('kill-label');
-      if (killActive) {
-        btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 bg-rose-600 text-white shadow-lg transition";
-        label.innerText = "HALTED (Active)";
-        alert("EMERGENCY STOP: All Outlook background sync and draft generation have been stopped immediately.");
-      } else {
-        btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition shadow-sm";
-        label.innerText = "Emergency Stop";
+    async function toggleKillSwitch() {
+      const endpoint = killActive ? "/api/autonomy/resume" : "/api/autonomy/kill";
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "X-CSRF-Token": csrfToken }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          killActive = data.is_halted;
+          const btn = document.getElementById('kill-btn');
+          const label = document.getElementById('kill-label');
+          if (killActive) {
+            btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 bg-rose-600 text-white shadow-lg transition";
+            label.innerText = "HALTED (Active)";
+            alert(data.message);
+          } else {
+            btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-semibold flex items-center space-x-1.5 bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 transition shadow-sm";
+            label.innerText = "Emergency Stop";
+            alert(data.message);
+          }
+        }
+      } catch (e) {
+        console.error("Kill switch error:", e);
       }
     }
 

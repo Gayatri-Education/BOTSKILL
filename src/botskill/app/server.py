@@ -18,7 +18,7 @@ from botskill.app.auth import (
     SessionManager,
     get_csrf_verifier,
 )
-from botskill.app.routers import accounts, ai, knowledge
+from botskill.app.routers import accounts, ai, autonomy, drafts, knowledge
 from botskill.core.interfaces import EmailProvider
 from botskill.storage.database import DatabaseManager
 
@@ -79,6 +79,7 @@ def create_app(
     app.state.host = host
     app.state.port = port
     app.state.draft_only = True
+    app.state.is_halted = False
 
     csrf_verifier = get_csrf_verifier(session_manager)
 
@@ -90,6 +91,8 @@ def create_app(
     app.include_router(accounts.router, dependencies=[Depends(csrf_verifier)])
     app.include_router(ai.router, dependencies=[Depends(csrf_verifier)])
     app.include_router(knowledge.router, dependencies=[Depends(csrf_verifier)])
+    app.include_router(drafts.router, dependencies=[Depends(csrf_verifier)])
+    app.include_router(autonomy.router, dependencies=[Depends(csrf_verifier)])
 
     @app.get("/", summary="Dashboard Root Interface")
     async def serve_dashboard():

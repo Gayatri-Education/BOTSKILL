@@ -280,6 +280,57 @@ class StorageRepository:
                 created_at=row["created_at"],
             )
 
+    def list_drafts(self) -> List[DraftReply]:
+        query = "SELECT * FROM drafts ORDER BY created_at DESC;"
+        drafts = []
+        with self.db.transaction() as cur:
+            cur.execute(query)
+            for row in cur.fetchall():
+                citations = [
+                    PolicyCitation(**c) for c in json.loads(row["citations_json"] or "[]")
+                ]
+                drafts.append(DraftReply(
+                    draft_id=row["draft_id"],
+                    message_id=row["message_id"],
+                    thread_id=row["thread_id"],
+                    account_id=row["account_id"],
+                    subject=row["subject"],
+                    body_text=row["body_text"],
+                    body_html=row["body_html"],
+                    citations=citations,
+                    policy_decision=PolicyDecision(row["policy_decision"]),
+                    decision_reason=row["decision_reason"],
+                    model_provenance=row["model_provenance"],
+                    latency_ms=row["latency_ms"],
+                    staged_to_provider=bool(row["staged_to_provider"]),
+                    is_approved=bool(row["is_approved"]),
+                    created_at=row["created_at"],
+                ))
+        return drafts
+
+    def update_draft_text(self, draft_id: str, subject: Optional[str] = None, body_text: Optional[str] = None) -> bool:
+        updates = []
+        params = []
+        if subject is not None:
+            updates.append("subject = ?")
+            params.append(subject)
+        if body_text is not None:
+            updates.append("body_text = ?")
+            params.append(body_text)
+        if not updates:
+            return False
+        params.append(draft_id)
+        query = f"UPDATE drafts SET {', '.join(updates)} WHERE draft_id = ?;"
+        with self.db.transaction() as cur:
+            cur.execute(query, tuple(params))
+            return cur.rowcount > 0
+
+    def mark_draft_staged(self, draft_id: str) -> bool:
+        query = "UPDATE drafts SET staged_to_provider = 1 WHERE draft_id = ?;"
+        with self.db.transaction() as cur:
+            cur.execute(query, (draft_id,))
+            return cur.rowcount > 0
+
     # --- Policy Rule Operations ---
 
     def insert_rule(self, rule: PolicyRule) -> None:
