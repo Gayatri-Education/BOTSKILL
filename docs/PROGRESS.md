@@ -24,7 +24,7 @@
 | **9** | **Dashboard: Knowledge & Policy Matrix** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 41 passed in `test_dashboard_knowledge_api.py` | None |
 | **10** | **Draft Review Queue & Autonomy Controls** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 46 passed in `test_dashboard_drafts_and_autonomy.py` | None |
 | **11** | **Controlled Learning & Governance** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 51 passed in `test_controlled_learning.py` | None |
-| **12** | Security Hardening & Adversarial Evals | NOT STARTED | no | no | no | no | — | Phase 10 |
+| **12** | **Security Hardening & Adversarial Evals** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 54 passed in `test_security_hardening.py` | None |
 | **13** | Reliability, Crash Recovery & Resilience | NOT STARTED | no | no | no | no | — | Phase 10 |
 | **14** | Packaging & Windows Launcher | NOT STARTED | no | no | no | no | — | Phase 13 |
 | **15** | Agent Skill & CLI Parity | NOT STARTED | no | no | no | no | — | Phase 14 |
