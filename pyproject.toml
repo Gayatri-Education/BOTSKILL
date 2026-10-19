@@ -1,0 +1,39 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "botskill"
+version = "3.0.0"
+description = "Provider-independent, local-first email automation with document intelligence and local SLM inference."
+readme = "DEVELOPMENT.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pydantic>=2.0",
+    "fastapi>=0.100.0",
+    "uvicorn>=0.22.0",
+    "pyyaml>=6.0",
+]
+
+[project.optional-dependencies]
+local_slm = [
+    "llama-cpp-python>=0.2.70",
+]
+windows_outlook = [
+    "pywin32>=306",
+]
+documents = [
+    "pypdf>=3.10.0",
+    "python-docx>=0.8.11",
+    "pymupdf>=1.23.0",
+]
+test = [
+    "pytest>=7.0.0",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+pythonpath = ["src"]

@@ -9,7 +9,7 @@
 | Phase | Description | Status | Plan Reviewed | Code Complete | Tests Passed | Debug Done | Evidence / Commit | Blockers |
 |---|---|---|---|---|---|---|---|---|
 | **0** | **Baseline Audit & Environment Setup** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | `docs/BASELINE_AUDIT.md` | None |
-| **1** | Core Domain Models & SQLite Persistence | NOT STARTED | no | no | no | no | — | None |
+| **1** | **Core Domain Models & SQLite Persistence** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 8 passed in `test_domain_and_storage.py` | None |
 | **2** | Email Connectors & Windows Outlook COM | NOT STARTED | no | no | no | no | — | Phase 1 |
 | **3** | AI Gateway & Provider Router | NOT STARTED | no | no | no | no | — | Phase 1 |
 | **4** | Native Local SLM Runtime (llama-cpp) | NOT STARTED | no | no | no | no | — | Phase 3 |
