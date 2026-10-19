@@ -15,6 +15,10 @@ dependencies = [
     "pyyaml>=6.0",
 ]
 
+[project.scripts]
+botskill = "botskill.cli:main"
+
+
 [project.optional-dependencies]
 local_slm = [
     "llama-cpp-python>=0.2.70",

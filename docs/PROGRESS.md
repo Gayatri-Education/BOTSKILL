@@ -27,7 +27,7 @@
 | **12** | **Security Hardening & Adversarial Evals** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 54 passed in `test_security_hardening.py` | None |
 | **13** | **Reliability, Crash Recovery & Resilience** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 58 passed in `test_reliability_and_recovery.py` | None |
 | **14** | **Packaging & Windows Launcher** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 61 passed in `test_packaging_and_launcher.py` | None |
-| **15** | Agent Skill & CLI Parity | NOT STARTED | no | no | no | no | — | Phase 14 |
+| **15** | **Agent Skill & CLI Parity** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 5 passed in `test_cli_and_agent_skill.py` (63 total unit tests) | None |
 | **16** | End-to-End Acceptance & Final Sign-Off | NOT STARTED | no | no | no | no | — | Phase 15 |
 
 ---
