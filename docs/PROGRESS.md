@@ -14,11 +14,11 @@
 | **3** | **AI Gateway & Provider Router** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 16 passed in `test_ai_gateway.py` | None |
 | **4** | **Native Local SLM Runtime (llama-cpp)** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 19 passed in `test_local_slm_runtime.py` | None |
 | **5** | **Reliable Routing & Failover Verification** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 22 passed in `test_failover_routing.py` | None |
-| **6A** | Doc Intake & Safe Parsers | NOT STARTED | no | no | no | no | — | Phase 1 |
-| **6B** | Document Classification & Metadata | NOT STARTED | no | no | no | no | — | Phase 6A |
-| **6C** | Rule Extraction & Conflict Resolution | NOT STARTED | no | no | no | no | — | Phase 6B |
-| **6D** | Policy-Grounded Drafting & Provenance | NOT STARTED | no | no | no | no | — | Phase 6C, Phase 4 |
-| **6E** | Policy Lifecycle & Invalidation | NOT STARTED | no | no | no | no | — | Phase 6D |
+| **6A** | **Doc Intake & Safe Parsers** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 26 passed in `test_document_intelligence.py` | None |
+| **6B** | **Document Classification & Metadata** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 26 passed in `test_document_intelligence.py` | None |
+| **6C** | **Rule Extraction & Conflict Resolution** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 26 passed in `test_document_intelligence.py` | None |
+| **6D** | **Policy-Grounded Drafting & Provenance** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 26 passed in `test_document_intelligence.py` | None |
+| **6E** | **Policy Lifecycle & Invalidation** | **ACCEPTED** | **YES** | **YES** | **YES** | **YES** | 26 passed in `test_document_intelligence.py` | None |
 | **7** | Local Dashboard Foundation & Auth | NOT STARTED | no | no | no | no | — | Phase 1 |
 | **8** | Dashboard: Accounts & AI Management | NOT STARTED | no | no | no | no | — | Phase 7, Phase 2, Phase 4 |
 | **9** | Dashboard: Knowledge & Policy Matrix | NOT STARTED | no | no | no | no | — | Phase 8, Phase 6 |
